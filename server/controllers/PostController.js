@@ -32,7 +32,8 @@ module.exports = {
     delete: (req, res) => {
         try {
             console.log('Delete resource', req.body)
-            res.status(200);
+            const filteredPosts = posts.filter(p => p.id !== req.body.postId)
+            res.status(200).send(filteredPosts);
         } catch {
             console.log('An error occurred in GET posts', err)
             res.status(500).send(err)

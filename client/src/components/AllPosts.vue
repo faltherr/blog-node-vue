@@ -21,7 +21,7 @@
 
 <script>
 import Post from "./Post";
-console.log(this.contentDimensions);
+
 export default {
   name: "HelloWorld",
   data() {
