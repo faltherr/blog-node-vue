@@ -46,7 +46,7 @@ export default {
     }
   },
   methods: {
-    // Question: How do I update state in the event of a successful network request
+    // Question 4: How do I update state in the event of a successful or failed network request
     async deletePost(postId) {
       console.log(postId);
       try {
@@ -64,7 +64,7 @@ export default {
       this.isEditing = !this.isEditing;
       this.postContent= this.content
     },
-    // Question: How do I update state in the event of a successful network request
+    // Question 4: How do I update state in the event of a successful or failed network request
     async updatePost(postId) {
       try {
         await fetch(`http://localhost:3000/posts/${postId}`, {

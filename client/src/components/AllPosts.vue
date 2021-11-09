@@ -29,7 +29,7 @@ export default {
       posts: null
     };
   },
-  // Can I use computed properties to set the height of an element based on another element?
+  // Question 2: Can I use computed properties to set the height of an element based on another element?
   // computed: {
   //   navHeight(){
   //     console.log(document.getElementsByClassName('navbar')[0])
@@ -44,6 +44,7 @@ export default {
   //   }
   // },
   components: { ViewTemplate, Post },
+  // Question 1: What is the simple Vue method for setting loading state?
   async created() {
     try {
       const response = await fetch("http://localhost:3000/posts", {
