@@ -1,4 +1,4 @@
-# client
+# What's in this Repo
 
 > A noDB simple blog with a Vue.js frontend and a json-server backend
 
