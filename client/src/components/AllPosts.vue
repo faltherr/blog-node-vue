@@ -1,26 +1,25 @@
 <template>
-  <main class="post-view">
-    <div class="main-title" ref="mainTitle">
-      <h4>All the posts</h4>
-    </div>
-    <div class="content-container">
-      <div class="all-posts-content">
-        <Post
-          v-for="post in posts"
-          :key="post.id"
-          :image="post.imageUrl"
-          :title="post.title"
-          :author="post.author"
-          :content="post.content"
-          :date="post.datePublished"
-        />
-      </div>
-    </div>
-  </main>
+  <ViewTemplate>
+    <template v-slot:title>
+      <h4>All the Posts</h4>
+    </template>
+    <template v-slot:content>
+      <Post
+        v-for="post in posts"
+        :key="post.id"
+        :image="post.imageUrl"
+        :title="post.title"
+        :author="post.author"
+        :content="post.content"
+        :date="post.datePublished"
+      />
+    </template>
+  </ViewTemplate>
 </template>
 
 <script>
 import Post from "./Post";
+import ViewTemplate from "./ViewTemplate";
 
 export default {
   name: "HelloWorld",
@@ -44,7 +43,7 @@ export default {
   //     // return document.getElementsByClassName('main-title')[0].clientHeight
   //   }
   // },
-  components: { Post },
+  components: { ViewTemplate, Post },
   async created() {
     try {
       const response = await fetch("http://localhost:3000/posts", {
