@@ -1,6 +1,6 @@
 # client
 
-> A Vue.js project
+> A noDB simple blog with a Vue.js frontend and a json-server backend
 
 ## Build Setup
 
@@ -16,8 +16,12 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+```
+## Server Setup
 
+``` bash
 # to run the server use json-server [Optional port]
+# npm i json-server if you do not have it installed globally
 json-server --watch db.json [--port 3004]
 
 # here is the db schema in case you delete all of the posts
