@@ -33,6 +33,6 @@ export default {
 }
 .all-posts-content {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>

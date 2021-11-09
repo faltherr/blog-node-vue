@@ -47,7 +47,7 @@ export default {
   components: { Post },
   async created() {
     try {
-      const response = await fetch("http://localhost:3080/api/posts", {
+      const response = await fetch("http://localhost:3000/posts", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -65,7 +65,6 @@ export default {
 <style scoped>
 .post-view {
   padding: 0px 50px;
-  height: 100%;
 }
 .main-title {
   margin: 15px 0px;
@@ -77,7 +76,7 @@ export default {
 }
 .all-posts-content {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>
 

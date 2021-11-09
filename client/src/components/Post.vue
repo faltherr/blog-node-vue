@@ -29,15 +29,13 @@ export default {
   },
   methods: {
     async deletePost(postId) {
+      console.log(postId)
       try {
-        await fetch("http://localhost:3080/api/posts", {
+        await fetch(`http://localhost:3000/posts/${postId}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            postId
-          })
         });
       } catch (err) {
         console.log("Error deleting post", err);
@@ -52,6 +50,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10px;
   width: 400px;
 }
 .post-image {
