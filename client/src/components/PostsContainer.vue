@@ -1,7 +1,7 @@
 <template>
   <ViewTemplate>
     <template v-slot:title>
-      <h4>Edit Posts</h4>
+      <h4>{{pageTitle}}</h4>
     </template>
     <template v-slot:content>
       <p v-if="loadingPosts">Loading</p>
@@ -42,6 +42,11 @@ export default {
   //     console.log(document.getElementsByClassName('navbar')[0])
   //     return document.getElementsByClassName('navbar')[0].clientHeight
   //   },
+  computed: {
+    pageTitle(){
+      return `${this.$route.path === '/edit' ? 'Edit' : ' All the'} Posts`
+    }
+  },
   async created() {
     this.fetchAllPosts();
   },
