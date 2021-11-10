@@ -25,6 +25,7 @@
 import ViewTemplate from "./ViewTemplate";
 import Post from "./Post";
 export default {
+  name: "PostContainer",
   components: {
     ViewTemplate,
     Post
@@ -32,9 +33,15 @@ export default {
   data() {
     return {
       posts: null,
-      loadingPosts: false,
+      loadingPosts: false
     };
   },
+  // Question 2 Follow Up: Cannot read client height of undefined so component is nav component not mounted prior to computation
+  // computed: {
+  //   navHeight(){
+  //     console.log(document.getElementsByClassName('navbar')[0])
+  //     return document.getElementsByClassName('navbar')[0].clientHeight
+  //   },
   async created() {
     this.fetchAllPosts();
   },

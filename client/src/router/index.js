@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AllPosts from '@/components/AllPosts'
 import CreatePost from '@/components/CreatePost'
-import EditPost from '@/components/EditPost'
+import PostsContainer from '@/components/PostsContainer'
 
 Vue.use(Router)
 
@@ -11,7 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'AllPosts',
-      component: AllPosts
+      component: PostsContainer
     },
     {
       path: '/create',
@@ -21,7 +20,7 @@ export default new Router({
     {
       path: '/edit',
       name: 'EditPost',
-      component: EditPost
+      component: PostsContainer
     }
   ]
 })

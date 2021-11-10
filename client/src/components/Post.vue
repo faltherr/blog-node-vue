@@ -50,7 +50,6 @@ export default {
   methods: {
     // Question 4: How do I update state in the event of a successful or failed network request
     async deletePost(postId) {
-      console.log(postId);
       try {
         await fetch(`http://localhost:3000/posts/${postId}`, {
           method: "DELETE",
