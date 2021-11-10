@@ -75,6 +75,7 @@ export default {
           },
           body: JSON.stringify({ content: this.postContent })
         });
+        this.$emit('refetch-posts')
       } catch (err) {
         console.log("Error deleting post", err);
       }

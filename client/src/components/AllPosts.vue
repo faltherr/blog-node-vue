@@ -12,6 +12,7 @@
         :author="post.author"
         :content="post.content"
         :date="post.datePublished"
+        @refetch-posts="fetchAllPosts"
       />
     </template>
   </ViewTemplate>
@@ -46,17 +47,22 @@ export default {
   components: { ViewTemplate, Post },
   // Question 1: What is the simple Vue method for setting loading state?
   async created() {
-    try {
-      const response = await fetch("http://localhost:3000/posts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      const result = await response.json();
-      this.posts = result;
-    } catch (err) {
-      console.log("Error", err);
+    this.fetchAllPosts();
+  },
+  methods: {
+    async fetchAllPosts() {
+      try {
+        const response = await fetch("http://localhost:3000/posts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const result = await response.json();
+        this.posts = result;
+      } catch (err) {
+        console.log("Error", err);
+      }
     }
   }
 };

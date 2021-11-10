@@ -29,26 +29,26 @@ export default {
   },
   data() {
     return {
-      posts: null,
+      posts: null
     };
   },
   async created() {
-    this.fetchAllPosts()
+    this.fetchAllPosts();
   },
   methods: {
-    async fetchAllPosts(){
-    try {
-      const response = await fetch("http://localhost:3000/posts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      const result = await response.json();
-      this.posts = result;
-    } catch (err) {
-      console.log("Error", err);
-    }
+    async fetchAllPosts() {
+      try {
+        const response = await fetch("http://localhost:3000/posts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const result = await response.json();
+        this.posts = result;
+      } catch (err) {
+        console.log("Error", err);
+      }
     }
   }
 };
