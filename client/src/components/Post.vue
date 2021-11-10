@@ -56,6 +56,7 @@ export default {
             "Content-Type": "application/json"
           }
         });
+        this.$emit('refetch-posts')
       } catch (err) {
         console.log("Error deleting post", err);
       }

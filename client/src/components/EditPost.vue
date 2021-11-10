@@ -13,6 +13,7 @@
         :content="post.content"
         :date="post.datePublished"
         :id="post.id"
+        @refetch-posts="fetchAllPosts"
       />
     </template>
   </ViewTemplate>
@@ -32,6 +33,10 @@ export default {
     };
   },
   async created() {
+    this.fetchAllPosts()
+  },
+  methods: {
+    async fetchAllPosts(){
     try {
       const response = await fetch("http://localhost:3000/posts", {
         method: "GET",
@@ -43,6 +48,7 @@ export default {
       this.posts = result;
     } catch (err) {
       console.log("Error", err);
+    }
     }
   }
 };
