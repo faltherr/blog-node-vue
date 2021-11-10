@@ -4,6 +4,7 @@
       <h4>All the Posts</h4>
     </template>
     <template v-slot:content>
+      <!-- <p>Loading</p> -->
       <Post
         v-for="post in posts"
         :key="post.id"
@@ -24,31 +25,23 @@ import ViewTemplate from "./ViewTemplate";
 
 export default {
   name: "HelloWorld",
+  components: { ViewTemplate, Post },
+  // Question 1: What is the simple Vue method for setting loading state?
+  async created() {
+    this.fetchAllPosts();
+  },
   data() {
     return {
       msg: "Hey Im some content",
       posts: null
     };
   },
-  // Question 2: Can I use computed properties to set the height of an element based on another element?
+  // Question 2 Follow Up: Cannot read client height of undefined so component is nav component not mounted prior to computation
   // computed: {
   //   navHeight(){
   //     console.log(document.getElementsByClassName('navbar')[0])
-  //     // return document.getElementsByClassName('navbar')[0].clientHeight
-  //     return 200
+  //     return document.getElementsByClassName('navbar')[0].clientHeight
   //   },
-  //   titleHeight(){
-
-  //     console.log(document.getElementsByClassName('main-title')[0])
-  //     return 200
-  //     // return document.getElementsByClassName('main-title')[0].clientHeight
-  //   }
-  // },
-  components: { ViewTemplate, Post },
-  // Question 1: What is the simple Vue method for setting loading state?
-  async created() {
-    this.fetchAllPosts();
-  },
   methods: {
     async fetchAllPosts() {
       try {

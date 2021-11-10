@@ -53,5 +53,3 @@ export default {
   }
 };
 </script>
-
-// TODO update state in response to new server data

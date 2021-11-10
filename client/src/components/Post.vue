@@ -30,6 +30,8 @@
 
 <script>
 export default {
+  name: "Post",
+  props: ["author", "content", "date", "image", "title", "id"],
   data() {
     return {
       postContent: this.content,
@@ -56,14 +58,14 @@ export default {
             "Content-Type": "application/json"
           }
         });
-        this.$emit('refetch-posts')
+        this.$emit("refetch-posts");
       } catch (err) {
         console.log("Error deleting post", err);
       }
     },
     toggleEditing: function() {
       this.isEditing = !this.isEditing;
-      this.postContent= this.content
+      this.postContent = this.content;
     },
     // Question 4: How do I update state in the event of a successful or failed network request
     async updatePost(postId) {
@@ -75,15 +77,13 @@ export default {
           },
           body: JSON.stringify({ content: this.postContent })
         });
-        this.$emit('refetch-posts')
+        this.$emit("refetch-posts");
       } catch (err) {
         console.log("Error deleting post", err);
       }
       this.isEditing = false;
     }
-  },
-  name: "Post",
-  props: ["author", "content", "date", "image", "title", "id"]
+  }
 };
 </script>
 
