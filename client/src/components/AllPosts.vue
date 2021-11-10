@@ -4,8 +4,9 @@
       <h4>All the Posts</h4>
     </template>
     <template v-slot:content>
-      <!-- <p>Loading</p> -->
+      <p v-if="loadingPosts">Loading</p>
       <Post
+        v-else
         v-for="post in posts"
         :key="post.id"
         :image="post.imageUrl"
@@ -24,16 +25,15 @@ import Post from "./Post";
 import ViewTemplate from "./ViewTemplate";
 
 export default {
-  name: "HelloWorld",
+  name: "AllPosts",
   components: { ViewTemplate, Post },
-  // Question 1: What is the simple Vue method for setting loading state?
   async created() {
     this.fetchAllPosts();
   },
   data() {
     return {
-      msg: "Hey Im some content",
-      posts: null
+      posts: null,
+      loadingPosts: false
     };
   },
   // Question 2 Follow Up: Cannot read client height of undefined so component is nav component not mounted prior to computation
@@ -43,7 +43,9 @@ export default {
   //     return document.getElementsByClassName('navbar')[0].clientHeight
   //   },
   methods: {
+  // New question: Can I share this method across components where it is duplicated? I tried to extract it to a different module, but it could not reference this in the refetch-posts event handler
     async fetchAllPosts() {
+      this.loadingPosts = true;
       try {
         const response = await fetch("http://localhost:3000/posts", {
           method: "GET",
@@ -56,6 +58,7 @@ export default {
       } catch (err) {
         console.log("Error", err);
       }
+      this.loadingPosts = false;
     }
   }
 };

@@ -4,7 +4,9 @@
       <h4>Edit Posts</h4>
     </template>
     <template v-slot:content>
+      <p v-if="loadingPosts">Loading</p>
       <Post
+        v-else
         v-for="post in posts"
         :key="post.id"
         :image="post.imageUrl"
@@ -29,7 +31,8 @@ export default {
   },
   data() {
     return {
-      posts: null
+      posts: null,
+      loadingPosts: false,
     };
   },
   async created() {
